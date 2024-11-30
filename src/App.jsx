@@ -4,7 +4,6 @@ import Users from "./components/Users";
 import { v4 } from "uuid";
 import Title from "./components/Title";
 import EditUser from "./components/EditUser";
-// import { Users } from "./components/Users";
 
 function App() {
     const [users, setUsers] = useState(
@@ -37,44 +36,20 @@ function App() {
             user.id === updatedUser.id ? updatedUser : user
         );
         setUsers(newUsers);
-        toggleEdit(); // Retorna ao modo de criação
+        toggleEdit();
     }
 
-    // function addUserClick(email, password, name, type) {
-    //     console.log(users);
-
-    //     const same = users.filter((user) =>
-    //         user.email === email ? true : false
-    //     );
-
-    //     console.log(same);
-    //     console.log("olá");
-    //     const newUser = {
-    //         id: v4(),
-    //         email,
-    //         password,
-    //         name,
-    //         type,
-    //     };
-    //     setUsers([...users, newUser]);
-    // }
-
     function addUserClick(email, password, name, type) {
-        // Filtra os usuários existentes pelo email
         const same = users.filter((user) => user.email === email);
 
-        // Verifica se já existe um usuário com o mesmo email
         if (same.length > 0) {
             alert("Email já cadastrado! Por favor, insira um novo email.");
-            // Solicita ao usuário um novo email
+
             const newEmail = prompt("Digite um novo email:");
 
-            // Se um novo email for inserido, tenta adicionar o usuário novamente
             if (newEmail) {
-                // Chama a função novamente com o novo email
                 return addUserClick(newEmail, password, name, type);
             } else {
-                // Se o usuário cancelar o prompt, não faz nada
                 return;
             }
         }
